@@ -12,6 +12,26 @@ app.get("/requests", async (req, res, next) => {
   }
 });
 
+app.post("/requests", async (req, res, next) => {
+  const { careType, startDate, endDate, clientName, extraInfo } =
+    req.body;
+  try {
+    if (!careType || !clientName) {
+      res.status(400).send("Must provide care type and client name");
+    } else {
+      const request = await Request.create({
+        careType,
+        startDate,
+        endDate,
+        clientName,
+        extraInfo,
+      });
+      res.json(request);
+    }
+  } catch (e) {
+    next(e);
+  }
+});
 
 
 app.listen(PORT, () => console.log(`Server started in port: ${PORT}`));
