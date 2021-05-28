@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const Request = require("./models").request;
 const PORT = process.env.PORT || 8080;
-
+const cors = require("cors");
+app.use(cors());
+app.use(express.json());
 app.get("/requests", async (req, res, next) => {
   try {
     const requests = await Request.findAll();
