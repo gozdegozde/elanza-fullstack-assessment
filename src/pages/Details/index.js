@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { fetchOneRequest } from "../../store/oneRequest/actions";
 import { selectOneRequest } from "../../store/oneRequest/selectors";
+import moment from "moment";
 
 
 export default function Details() {
@@ -16,10 +17,16 @@ export default function Details() {
   }, [id]);
 
   return (
-    <div>
-      <h1>Request Details</h1>
-    
-     Client Name{request.clientName}
+ <div style = {{border: "solid 1px gray", padding: "30%"}}>
+          <h1> REQUEST DETAILS</h1> 
+            Type : {request.careType} <br/>
+            
+            Name : {request.clientName} <br/>
+            Start Date : {moment(request.startDate).format("DD-MM-YYYY")} <br/>
+            End Date :  {moment(request.endDate).format("DD-MM-YYYY")} <br/>
+            Extra Information : {request.extraInfo} <br/>
+            Status : {request.status ? "Open" : "Closed"} <br/>
+    <button>Apply </button>
     </div>
   );
 }
