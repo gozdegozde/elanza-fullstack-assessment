@@ -1,8 +1,9 @@
 import axios from "axios";
+import moment from "moment";
 const apiUrl = process.env.API_URL || "http://localhost:8080";
 
 export function todayRequest(data) {
-  console.log("data", data)
+  
     return{
         type: "todayRequest/fetch",
         payload:data
@@ -15,10 +16,11 @@ export function fetchTodayRequest(date) {
     const response = await axios.get(`${apiUrl}/requests`);
 
     const allRequests = response.data;
-    console.log("All Request", allRequests);
+   
     function todayRequests() {
       const request = allRequests.filter((request) => {
-        const startDate = request.startDate.substr(0, 10);
+        const startDate = moment(request.startDate).format("YYYY-MM-DD");
+        
         return startDate === date;
       });
       return request;

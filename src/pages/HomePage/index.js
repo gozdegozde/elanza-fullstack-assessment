@@ -12,7 +12,7 @@ export default function HomePage() {
     const [startDate, setStartDate] = useState(new Date());
     const todayRequest = useSelector(selectTodayRequest);
     const date = moment(startDate).format("YYYY-MM-DD");
-console.log("Date", date);
+
 
     useEffect(()=> {
         dispatch(fetchTodayRequest(date))
@@ -25,7 +25,7 @@ console.log("Date", date);
         selected={startDate}
         onChange={(date) => setStartDate(date)}
         />
-        {console.log("Request",todayRequest)}
+        
         {!todayRequest ? (
             <>There is no requests </>
         ) : (

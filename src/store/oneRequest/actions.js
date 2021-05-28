@@ -39,3 +39,34 @@ export const updateStatus = (id, status) => {
    
   };
 };
+
+export const newRequest = ({
+  careType,
+  startDate,
+  endDate,
+  clientName,
+  extraInfo,
+}) => {
+  return async (dispatch) => {
+   
+    try {
+      const response = await axios.post(`${apiUrl}/requests`, {
+        careType,
+        startDate,
+        endDate,
+        clientName,
+        extraInfo,
+      });
+
+      dispatch(req(response.data));
+     
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
+
+export const req = (request) => ({
+  type: "addRequest/add",
+  payload: request,
+});

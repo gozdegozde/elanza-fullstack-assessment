@@ -13,6 +13,10 @@ export default function oneRequestReducer(state = initialState, action) {
           request : action.payload,
         }
 
+        case "addRequest/add":
+          return {
+            request : action.payload
+          }
     default:
       return state;
   }
