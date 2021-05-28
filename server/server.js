@@ -12,12 +12,6 @@ app.get("/requests", async (req, res, next) => {
   }
 });
 
-// this is the in-memory database ;)
-let counter = 0;
 
-app.get('/api/data', function (req, res) {
-  counter++;
-  return res.json({name: 'sunshine', counter: counter});
-});
 
 app.listen(PORT, () => console.log(`Server started in port: ${PORT}`));
