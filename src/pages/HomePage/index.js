@@ -31,7 +31,7 @@ export default function HomePage() {
         ) : (
             todayRequest.map((request)=> {
                 return(
-                    <div>
+                    <div key={request.id}>
                         <Request request={request}/>
                     </div>
                 )
