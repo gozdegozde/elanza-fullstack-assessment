@@ -28,16 +28,16 @@ console.log("Date", date);
         {!todayRequest ? (
             <>There is no requests </>
         ) : (
-            todayRequest.map((r)=> {
+            todayRequest.map((request)=> {
                 return(
                     <div>
-                        <Request request={r}/>
+                        <Request request={request}/>
                     </div>
                 )
             })
         )}
 
-        <Link to ="./requests">
+        <Link to ="./newrequest">
             <button>New Request</button>
         </Link>
       

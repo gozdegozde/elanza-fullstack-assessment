@@ -1,7 +1,10 @@
 import React, { useState, useEffect }  from 'react';
 import logo from './logo.png';
 import HomePage from "./pages/HomePage";
-import { Switch, Route, Link } from "react-router-dom";
+import NewRequest from "./pages/NewRequest";
+import Details from "./pages/Details";
+
+import { Switch, Route } from "react-router-dom";
 import './App.css';
 
 function App() {
@@ -12,7 +15,8 @@ function App() {
      
       <Switch>
         <Route exact path="/" component={HomePage} />
-        
+        <Route path="/newrequest" component={NewRequest}/>
+        <Route path="/requests/:id" component={Details}/>
       </Switch>
     </div>
   );
