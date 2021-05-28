@@ -11,8 +11,9 @@ export default function HomePage() {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const todayRequest = useSelector(selectTodayRequest);
-    const date = moment(startDate).format("DD/MM/YYYY");
+    const date = moment(startDate).format("YYYY-MM-DD");
 console.log("Date", date);
+
     useEffect(()=> {
         dispatch(fetchTodayRequest(date))
     },[date])

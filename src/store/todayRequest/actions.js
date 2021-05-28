@@ -2,6 +2,7 @@ import axios from "axios";
 const apiUrl = process.env.API_URL || "http://localhost:8080";
 
 export function todayRequest(data) {
+  console.log("data", data)
     return{
         type: "todayRequest/fetch",
         payload:data

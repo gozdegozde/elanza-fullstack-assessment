@@ -1,4 +1,4 @@
 
 export function selectOneRequest(reduxStore) {
-  return reduxStore.oneRequest.request;
+  return reduxStore.oneRequestReducer.request;
 }

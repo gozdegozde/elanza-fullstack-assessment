@@ -1,3 +1,3 @@
 export function selectTodayRequest(reduxStore) {
-  return reduxStore.todayRequests;
+  return reduxStore.todayRequestReducer.todayRequests;
 }
