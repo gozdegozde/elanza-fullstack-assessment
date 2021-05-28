@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { fetchOneRequest } from "../../store/oneRequest/actions";
+import { fetchOneRequest, updateStatus } from "../../store/oneRequest/actions";
 import { selectOneRequest } from "../../store/oneRequest/selectors";
 import moment from "moment";
 
@@ -26,7 +26,18 @@ export default function Details() {
             End Date :  {moment(request.endDate).format("DD-MM-YYYY")} <br/>
             Extra Information : {request.extraInfo} <br/>
             Status : {request.status ? "Open" : "Closed"} <br/>
-    <button>Apply </button>
+            {request.status === true ? 
+            <button onClick={(e) => {
+                    e.preventDefault();
+
+                    dispatch(updateStatus(request.id, request.status));
+             }} >Apply </button> : 
+            <button onClick={(e) => {
+                    e.preventDefault();
+
+                    dispatch(updateStatus(request.id, request.status));
+             }}>Reopen </button>}
+
     </div>
   );
 }

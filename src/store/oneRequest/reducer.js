@@ -8,6 +8,10 @@ export default function oneRequestReducer(state = initialState, action) {
       return {
         request: action.payload,
       };
+      case "oneRequest/update":
+        return {
+          request : action.payload,
+        }
 
     default:
       return state;

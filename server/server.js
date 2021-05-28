@@ -48,6 +48,23 @@ app.get("/requests/:id", async (req, res, next) => {
   }
 });
 
+app.put("/requests/:id", async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+    const requestToUpdate = await Request.findByPk(id);
+    if (!requestToUpdate) {
+      res.status(404).send("request not found");
+    } else {
+      const updatedRequest = await requestToUpdate.update({
+        status: !requestToUpdate.status,
+      });
+      res.json(updatedRequest);
+    }
+  } catch (e) {
+    next(e);
+  }
+});
+
 
 
 app.listen(PORT, () => console.log(`Server started in port: ${PORT}`));
