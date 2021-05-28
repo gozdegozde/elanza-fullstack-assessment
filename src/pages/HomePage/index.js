@@ -4,15 +4,18 @@ import { fetchTodayRequest } from "../../store/todayRequest/actions";
 import { selectTodayRequest } from "../../store/todayRequest/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Request from "../../components/Request";
+import moment from "moment"
 
 export default function HomePage() {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const todayRequest = useSelector(selectTodayRequest);
-
+    const date = moment(startDate).format("DD/MM/YYYY");
+console.log("Date", date);
     useEffect(()=> {
-        dispatch(fetchTodayRequest(startDate))
-    },[startDate])
+        dispatch(fetchTodayRequest(date))
+    },[date])
     return(
         <div>
             <h1>OPEN REQUESTS</h1>
@@ -28,13 +31,13 @@ export default function HomePage() {
             todayRequest.map((r)=> {
                 return(
                     <div>
-                         Requests :{r}
+                        <Request request={r}/>
                     </div>
                 )
             })
         )}
 
-        <Link to ="./request">
+        <Link to ="./requests">
             <button>New Request</button>
         </Link>
       
