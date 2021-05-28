@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     endDate: DataTypes.DATE,
     clientName: DataTypes.STRING,
     extraInfo: DataTypes.TEXT,
-    status: DataTypes.BOOLEAN
+    status: { type: DataTypes.BOOLEAN, defaultValue: true }
   }, {
     sequelize,
     modelName: 'request',

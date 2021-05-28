@@ -24,7 +24,8 @@ module.exports = {
         type: Sequelize.TEXT
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+         defaultValue: true,
       },
       createdAt: {
         allowNull: false,

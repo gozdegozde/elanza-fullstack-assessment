@@ -20,11 +20,15 @@ export function fetchTodayRequest(date) {
     function todayRequests() {
       const request = allRequests.filter((request) => {
         const startDate = moment(request.startDate).format("YYYY-MM-DD");
-        
-        return startDate === date;
+
+        return( 
+          startDate === date && request.status === true
+          );
+
       });
       return request;
     }
+    
     dispatch(todayRequest(todayRequests()));
   };
 }
